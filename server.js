@@ -13,6 +13,6 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + 'views/index.html');
 })
 
-app.get('/scripts/:item', function(req, res){
-  res.sendFile(path.join(__dirname, 'scripts', req.params.img))
+app.get('/public/:item', function(req, res){
+  res.sendFile(path.join(__dirname, 'public', req.params.item))
 })

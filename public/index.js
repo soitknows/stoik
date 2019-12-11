@@ -3,19 +3,6 @@ const webcamElement = document.getElementById('webcam');
 
 let net;
 
-
-function detectWebcam(callback) {
-  let md = navigator.mediaDevices;
-  if (!md || !md.enumerateDevices) return callback(false);
-  md.enumerateDevices().then(devices => {
-    callback(devices.some(device => 'videoinput' === device.kind));
-  })
-}
-
-detectWebcam(function(hasWebcam) {
-  console.log('Webcam: ' + (hasWebcam ? 'yes' : 'no'));
-})
-
 async function app() {
   console.log('Loading mobilenet..');
 
