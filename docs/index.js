@@ -4,17 +4,20 @@ const webcamElement = document.getElementById('webcam');
 let net;
 
 
-function detectWebcam(callback) {
-  let md = navigator.mediaDevices;
-  if (!md || !md.enumerateDevices) return callback(false);
-  md.enumerateDevices().then(devices => {
-    callback(devices.some(device => 'videoinput' === device.kind));
-  })
-}
+// Prefer camera resolution nearest to 1280x720.
+var constraints = { audio: true, video: { width: 1280, height: 720 } }; 
 
-detectWebcam(function(hasWebcam) {
-  console.log('Webcam: ' + (hasWebcam ? 'yes' : 'no'));
+navigator.mediaDevices.getUserMedia(constraints)
+.then(function(mediaStream) {
+  var video = document.querySelector('video');
+  video.srcObject = mediaStream;
+  video.onloadedmetadata = function(e) {
+    video.play();
+  };
 })
+.catch(function(err) { console.log(err.name + ": " + err.message); });
+
+
 
 async function app() {
   console.log('Loading mobilenet..');
