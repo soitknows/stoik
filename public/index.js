@@ -46,10 +46,10 @@ async function app() {
       // Get the most likely class and confidences from the classifier module.
       const result = await classifier.predictClass(activation);
 
-      const classes = ['A', 'B', 'C'];
+      const classes = ['Mouse', 'Laptop', 'Keyboard'];
       document.getElementById('console').innerText = `
-        prediction: ${classes[result.label]}\n
-        probability: ${result.confidences[result.label]}
+        ${classes[result.label]}
+        Probability: ${((result.confidences[result.label]) * 100).toFixed(2) + "%"}
       `;
 
       // Dispose the tensor to release the memory.

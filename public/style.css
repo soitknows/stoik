@@ -13,8 +13,6 @@ h1{
   color: white;
 }
 
-
-
 button {
   background-color: #62b8ea;
   color: white;
@@ -28,7 +26,12 @@ button:hover{
    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-
+div#console{
+  text-align: center;
+  font-size: 50px;
+  font-family: sans-serif;
+  color: white;
+}
 
 video {
   margin-left: auto;
