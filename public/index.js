@@ -1,5 +1,6 @@
 const classifier = knnClassifier.create();
 const webcamElement = document.getElementById('webcam');
+const webcamConfig = { facingMode : 'environment'};
 
 let net;
 
@@ -12,7 +13,7 @@ async function app() {
 
   // Create an object from Tensorflow.js data API which could capture image 
   // from the web camera as Tensor.
-  const webcam = await tf.data.webcam(webcamElement);
+  const webcam = await tf.data.webcam(webcamElement, webcamConfig);
 
   // Reads an image from the webcam and associates it with a specific class
   // index.
